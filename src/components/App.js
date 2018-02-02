@@ -3,28 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
+import { Section } from '../style';
+import Home from './Home';
 
 const AppContainer = styled.div`
   width: 70%;
   margin: 0 auto;
 `;
 
-const SectionHead = styled.h1`
-  font-size: 2rem;  
-  color: hsl(290, 32%, 62%);
-`;
-
-const Section = styled.div`
-  text-align: left;
-  color: hsl(0, 0%, 32%);
-  line-height: 1.4;
-`;
-
 const Routes = () => (
   <Router>
     <Switch>
       <Route exact path={'/form'} render={() => (<h3>Form goes here</h3>)} />
-      <Route render={() => (<h1>Home</h1>)} />
+      <Route component={Home} />
     </Switch>
   </Router>
 );
@@ -38,12 +29,6 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <AppContainer>
-          <Section>
-            <SectionHead>Quam Vehicula Elementum</SectionHead>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
-            <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-          </Section>
           <Section>
             <Routes />
           </Section>
