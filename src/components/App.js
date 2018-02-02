@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import { Section } from '../style';
 import Home from './Home';
+import PersonForm from './PersonForm';
 
 const AppContainer = styled.div`
   width: 70%;
@@ -14,7 +15,7 @@ const AppContainer = styled.div`
 const Routes = () => (
   <Router>
     <Switch>
-      <Route exact path={'/form'} render={() => (<h3>Form goes here</h3>)} />
+      <Route exact path={'/form'} component={PersonForm} />
       <Route component={Home} />
     </Switch>
   </Router>
