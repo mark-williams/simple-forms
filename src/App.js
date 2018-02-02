@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -19,6 +20,15 @@ const Section = styled.div`
   line-height: 1.4;
 `;
 
+const Routes = () => (
+  <Router>
+    <Switch>
+      <Route exact path={'/form'} render={() => (<h3>Form goes here</h3>)} />
+      <Route render={() => (<h1>Home</h1>)} />
+    </Switch>
+  </Router>
+);
+
 class App extends Component {
   render() {
     return (
@@ -33,6 +43,9 @@ class App extends Component {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
             <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
             <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+          </Section>
+          <Section>
+            <Routes />
           </Section>
         </AppContainer>
       </div>
