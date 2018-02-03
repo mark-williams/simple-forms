@@ -22,7 +22,7 @@ const Routes = () => (
 const Navigation = styled.div`
   background-color: black;
   color: white;
-  padding: 0.8rem;
+  padding: 0.6rem;
   text-align: left; 
   a {
     color: hsl(0, 0%, 80%);
@@ -31,6 +31,9 @@ const Navigation = styled.div`
   };
   a:hover {
     color: white;
+  };
+  a.active {
+    border-bottom: 1px solid hsl(0, 0%, 80%);
   }
 `;
 
@@ -45,8 +48,8 @@ class App extends Component {
               <h1 className="App-title">Welcome to React</h1>
               <div>
                 <Navigation>
-                  <NavLink to="/">Home</NavLink>
-                  <NavLink to="/form">Form</NavLink>
+                  <NavLink activeClassName="active" exact to="/">Home</NavLink>
+                  <NavLink activeClassName="active" to="/form">Form</NavLink>
                 </Navigation>
               </div>
             </header>
