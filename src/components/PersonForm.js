@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Form = styled.div`
   border: 1px solid #ccc;
   border-radius: 0.4rem;
-  padding: 2rem;
+  padding: 1.5rem;
   width: 600px;
 `;
 
@@ -18,6 +18,9 @@ const FormBlock = styled.div`
   height: 2rem;
   display: flex;
   flex-direction: row;
+  &.buttons {
+    margin-top: 2rem;
+  }
 `;
 
 const ItemLabel = styled.label`
@@ -48,6 +51,13 @@ const ItemCapture = styled.div`
   }
 `;
 
+const PrimaryButton = styled.button`
+  border-width: 0;
+  background-color: hsl(130, 78%, 40%);
+  color: white;
+  width: 10rem;
+`;
+
 const PersonForm = () => (
   <Form>
     <FormHeading>Your details</FormHeading>
@@ -58,6 +68,10 @@ const PersonForm = () => (
     <FormBlock>
       <ItemLabel htmlFor="secondName">Second name</ItemLabel>
       <ItemCapture><input id="secondName" type="text" /></ItemCapture>
+    </FormBlock>
+    <FormBlock className="buttons">
+      <ItemLabel />
+      <PrimaryButton>OK</PrimaryButton>
     </FormBlock>
   </Form>
 );
