@@ -30,10 +30,22 @@ const ItemLabel = styled.label`
   align-items: flex-end;
 `;
 
-const ItemCapture = styled.input`
+const ItemCapture = styled.div`
   flex: 7;
-  font-size: 1rem;
-  padding-left: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  input { 
+    width: 100%;
+    padding-left: 0.4rem;
+    font-size: 1rem;
+  }
+  input[type=checkbox] {
+    width: auto;
+    padding-left: 0;
+    margin-left: 0;
+  }
 `;
 
 const PersonForm = () => (
@@ -41,11 +53,11 @@ const PersonForm = () => (
     <FormHeading>Your details</FormHeading>
     <FormBlock>
       <ItemLabel htmlFor="firstName">First name</ItemLabel>
-      <ItemCapture id="firstName" type="text" />
+      <ItemCapture><input id="firstName" type="text" /></ItemCapture>
     </FormBlock>
     <FormBlock>
       <ItemLabel htmlFor="secondName">Second name</ItemLabel>
-      <ItemCapture id="secondName" type="text" />
+      <ItemCapture><input id="secondName" type="text" /></ItemCapture>
     </FormBlock>
   </Form>
 );
