@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <fragment>
+          <Fragment>
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">Welcome to React</h1>
@@ -58,7 +58,7 @@ class App extends Component {
                 <Routes />
               </Section>
             </AppContainer>
-          </fragment>
+          </Fragment>
         </Router>
       </div>
     );
