@@ -28,13 +28,13 @@ const Navigation = styled.div`
     color: hsl(0, 0%, 80%);
     text-decoration: none;
     margin-right: 1.2rem;
+    &:hover {
+      color: white;
+    }
+    &.active {
+      border-bottom: 1px solid hsl(0, 0%, 80%);        
+    }
   };
-  a:hover {
-    color: white;
-  };
-  a.active {
-    border-bottom: 1px solid hsl(0, 0%, 80%);
-  }
 `;
 
 class App extends Component {
