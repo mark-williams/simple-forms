@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { reduxForm, Field } from 'redux-form';
 
 const Form = styled.div`
   border: 1px solid #ccc;
@@ -63,11 +64,11 @@ const PersonForm = () => (
     <FormHeading>Your details</FormHeading>
     <FormBlock>
       <ItemLabel htmlFor="firstName">First name</ItemLabel>
-      <ItemCapture><input id="firstName" type="text" /></ItemCapture>
+      <ItemCapture><Field id="firstName" name="firstName" component="input" type="text" /></ItemCapture>
     </FormBlock>
     <FormBlock>
       <ItemLabel htmlFor="secondName">Second name</ItemLabel>
-      <ItemCapture><input id="secondName" type="text" /></ItemCapture>
+      <ItemCapture><Field id="secondName" name="secondName" component="input" type="text" /></ItemCapture>
     </FormBlock>
     <FormBlock className="buttons">
       <ItemLabel />
@@ -76,5 +77,6 @@ const PersonForm = () => (
   </Form>
 );
 
-export default PersonForm;
+const wrappedForm = reduxForm({ form: 'person' })(PersonForm);
+export default wrappedForm;
 
