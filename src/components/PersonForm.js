@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { reduxForm, Field } from 'redux-form';
+import { PropTypes } from 'prop-types';
 
 const Form = styled.div`
   border: 1px solid #ccc;
@@ -59,7 +60,7 @@ const PrimaryButton = styled.button`
   width: 10rem;
 `;
 
-const PersonForm = () => (
+const PersonForm = ({ handleSubmit }) => (
   <Form>
     <FormHeading>Your details</FormHeading>
     <FormBlock>
@@ -72,11 +73,20 @@ const PersonForm = () => (
     </FormBlock>
     <FormBlock className="buttons">
       <ItemLabel />
-      <PrimaryButton>OK</PrimaryButton>
+      <PrimaryButton onClick={handleSubmit}>OK</PrimaryButton>
     </FormBlock>
   </Form>
 );
 
-const wrappedForm = reduxForm({ form: 'person' })(PersonForm);
+PersonForm.propTypes = {
+  handleSubmit: PropTypes.func
+};
+
+const onSubmit = (data) => {
+  // eslint-disable-next-line
+  console.log(data);
+};
+
+const wrappedForm = reduxForm({ form: 'person', onSubmit })(PersonForm);
 export default wrappedForm;
 
