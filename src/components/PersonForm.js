@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
@@ -61,16 +61,49 @@ const PrimaryButton = styled.button`
   width: 10rem;
 `;
 
+const validate = values => {
+  const errors = {};
+  if (!values.firstName) {
+    errors.firstName = 'Required';
+  }
+
+  if (!values.secondName) {
+    errors.secondName = 'Required';
+  }
+
+  return errors;
+};
+
+const warn = () => {
+  const warnings = {};
+  return warnings;
+};
+
+/* eslint-disable react/prop-types */
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error }
+}) => {
+  const labelStyle = touched && error ? { color: 'red' } : {};
+  return (
+    <Fragment>
+      <ItemLabel htmlFor={input.name} style={labelStyle}>{label}</ItemLabel>
+      <ItemCapture><input id={input.name} {...input} type={type} /></ItemCapture>
+    </Fragment>
+  );
+};
+/* eslint-enable react/prop-types */
+
 const PersonForm = ({ handleSubmit }) => (
   <Form>
     <FormHeading>Your details</FormHeading>
     <FormBlock>
-      <ItemLabel htmlFor="firstName">First name</ItemLabel>
-      <ItemCapture><Field id="firstName" name="firstName" component="input" type="text" /></ItemCapture>
+      <Field name="firstName" component={renderField} type="input" label="First name" />
     </FormBlock>
     <FormBlock>
-      <ItemLabel htmlFor="secondName">Second name</ItemLabel>
-      <ItemCapture><Field id="secondName" name="secondName" component="input" type="text" /></ItemCapture>
+      <Field name="secondName" component={renderField} type="input" label="Second name" />
     </FormBlock>
     <FormBlock className="buttons">
       <ItemLabel />
@@ -88,6 +121,6 @@ const onSubmit = (data) => {
   console.log(data);
 };
 
-const wrappedForm = reduxForm({ form: 'person', onSubmit })(PersonForm);
+const wrappedForm = reduxForm({ form: 'person', onSubmit, validate, warn })(PersonForm);
 export default wrappedForm;
 
