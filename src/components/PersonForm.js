@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { colours } from '../style';
 
 const Form = styled.div`
   border: 1px solid #ccc;
@@ -15,7 +16,6 @@ const FormHeading = styled.h3`
 `;
 
 const FormBlock = styled.div`
-  border: 0px solid pink;
   margin-bottom: 0.8rem;
   height: 2rem;
   display: flex;
@@ -26,7 +26,7 @@ const FormBlock = styled.div`
 `;
 
 const ItemLabel = styled.label`
-  color: #666;
+  color: ${colours.formLabel};
   flex: 2;
   margin-right: 1rem;
   display: flex;
@@ -36,12 +36,13 @@ const ItemLabel = styled.label`
 `;
 
 const ItemCapture = styled.div`
-  flex: 7;
   display: flex;
+  flex: 7;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  input { 
+  input {
+    color: ${colours.formInput}; 
     width: 100%;
     padding-left: 0.4rem;
     font-size: 1rem;
