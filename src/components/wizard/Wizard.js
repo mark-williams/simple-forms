@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const WizardNavigation = styled.div`
@@ -20,20 +21,28 @@ const WizardNavigationItem = styled.div`
   }
 `;
 
-const Wizard = () => (
-  <Fragment>
-    <h2>Forms Wizard</h2>
-    <div>
-      <WizardNavigation>
-        <WizardNavigationItem><NavLink to="/wizard/name" activeClassName="active">Name</NavLink></WizardNavigationItem>
-        <WizardNavigationItem><NavLink to="/wizard/address" activeClassName="active">Address</NavLink></WizardNavigationItem>
-      </WizardNavigation>
-    </div>
-    <Switch>
-      <Route exact path="/wizard/name" render={() => <div>Capture name</div>} />
-      <Route exact path="/wizard/address" render={() => <div>Capture address</div>} />
-    </Switch>
-  </Fragment>
-);
+const getPath = (basePath, stepName) => ( `${basePath}/${stepName}` );
+const Wizard = ({ match }) => {
+  const basePath = match.path;
+  return (
+    <Fragment>
+      <h2>Forms Wizard</h2>
+      <div>
+        <WizardNavigation>
+          <WizardNavigationItem><NavLink to={getPath(basePath, 'name')} activeClassName="active">Name</NavLink></WizardNavigationItem>
+          <WizardNavigationItem><NavLink to={getPath(basePath, 'address')} activeClassName="active">Address</NavLink></WizardNavigationItem>
+        </WizardNavigation>
+      </div>
+      <Switch>
+        <Route exact path={getPath(basePath, 'name')} render={() => <div>Capture name</div>} />
+        <Route exact path={getPath(basePath, 'address')} render={() => <div>Capture address</div>} />
+      </Switch>
+    </Fragment>
+  );
+};
+
+Wizard.propTypes = {
+  match: PropTypes.object
+};
 
 export default Wizard;
