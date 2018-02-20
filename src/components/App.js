@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 const Routes = () => (
   <Switch>
     <Route exact path={'/form'} component={PersonForm} />
-    <Route exact path={'/wizard'} component={Wizard} />
+    <Route path={'/wizard'} component={Wizard} />
     <Route component={Home} />
   </Switch>
 );
