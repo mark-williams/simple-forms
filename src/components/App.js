@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Section } from '../style';
 import Home from './Home';
 import PersonForm from './PersonForm';
+import Wizard from './wizard/Wizard';
 
 const AppContainer = styled.div`
   width: 70%;
@@ -15,6 +16,7 @@ const AppContainer = styled.div`
 const Routes = () => (
   <Switch>
     <Route exact path={'/form'} component={PersonForm} />
+    <Route exact path={'/wizard'} component={Wizard} />
     <Route component={Home} />
   </Switch>
 );
@@ -45,11 +47,12 @@ class App extends Component {
           <Fragment>
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
+              <h1 className="App-title">Welcome</h1>
               <div>
                 <Navigation>
                   <NavLink activeClassName="active" exact to="/">Home</NavLink>
                   <NavLink activeClassName="active" to="/form">Form</NavLink>
+                  <NavLink activeClassName="active" to="/wizard">Wizard</NavLink>
                 </Navigation>
               </div>
             </header>
