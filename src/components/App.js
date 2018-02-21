@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Section } from '../style';
 import Home from './Home';
 import PersonForm from './PersonForm';
-import Wizard from './wizard/Wizard';
+import SteppedFormsContainer from './wizard/SteppedFormsContainer';
 
 const AppContainer = styled.div`
   width: 70%;
@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 const Routes = () => (
   <Switch>
     <Route exact path={'/form'} component={PersonForm} />
-    <Route path={'/wizard'} component={Wizard} />
+    <Route path={'/wizard'} component={SteppedFormsContainer} />
     <Route component={Home} />
   </Switch>
 );
