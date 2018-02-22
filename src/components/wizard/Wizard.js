@@ -26,6 +26,9 @@ const WizardButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  button {
+    margin-left: 1rem
+  }
 `;
 
 class Wizard extends React.Component {
@@ -38,6 +41,7 @@ class Wizard extends React.Component {
   moveNext = this.makeStepMover(1);
 
   render = () => {
+    const isLastStep = this.state.currentStep === this.props.steps.length - 1;
     return (
       <Fragment>
         <h2>Forms Wizard</h2>
@@ -48,11 +52,11 @@ class Wizard extends React.Component {
         </div>
         <StepContainer>
           <div>
-            Step { this.state.currentStep}
+            { this.props.steps[this.state.currentStep].render() }
           </div>
           <WizardButtons>
-            <button onClick={this.movePrev}>Back</button>
-            <button onClick={this.moveNext}>Next</button>
+            { this.state.currentStep > 0 &&  <button onClick={this.movePrev}>Back</button> }
+            { !isLastStep && <button onClick={this.moveNext}>Next</button> }
           </WizardButtons>
         </StepContainer>
       </Fragment>
